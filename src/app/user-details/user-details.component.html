@@ -1,0 +1,22 @@
+<!-- {{user | json}} -->
+<div class="user_details">
+    <div class="user_card" *ngIf="(user$ | async) as user">  <!-- ça remplace le subscribe; avec le async on demande à attendre la recharge de tte la page -->
+        <div class="user_list_avatar">
+            <img [src]="user.picture.large" alt="">
+        </div>
+        <div class="card_info">
+            <div class="card_info_user">
+                <div class="info_fullname">
+                    <h2>
+                        {{user.name.title}} {{ user.name.first }} {{ user.name.last }}
+                    </h2>
+                    <address>
+                        Adresse : {{user.location.street.number}} {{user.location.street.name}} {{user.location.city}} {{user.location.state}} {{user.location.country}} 
+                    </address>
+                    <h2>Age: {{user.dob.age}} ans </h2>
+                </div>
+                <div class="info_email">{{ user.email }}</div>
+            </div>
+        </div>
+    </div>
+</div>

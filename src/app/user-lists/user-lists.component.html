@@ -1,0 +1,26 @@
+<!-- {{users | json}}  pour debuger -->
+
+<ul class="user_lists" [ngSwitch]="true">
+    <li *ngFor="let user of users"  class="user_lists_item">
+        <div class="user_lists_card">
+            <div class="user_lists_avatar">
+                <img [src]="user.picture.thumbnail" alt="">
+            </div>
+            <div class="card_info">
+                <div class="card_info_user">
+                    <div class="info_fullname">
+                        <p [routerLink]="['/users', user.login.username]">
+                            {{ user.name.first }} {{ user.name.last }}
+                        </p>
+                    </div>
+                    <div class="info_email">{{ user.email }}</div>
+                </div>
+                <div class="card_info_icon">
+                    <img class="info_icon" *ngSwitchCase="user.dob.age < 40" src="assets/icons/rookie.svg"/>
+                    <img class="info_icon" *ngSwitchCase="user.dob.age >= 40 && user.dob.age <= 60" src="assets/icons/advance.svg"/>
+                    <img class="info_icon" *ngSwitchCase="user.dob.age > 60" src="assets/icons/expert.svg"/>
+                </div>
+            </div>
+        </div>
+  </li>
+</ul>
